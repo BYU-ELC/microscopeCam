@@ -16,8 +16,8 @@ class Timer:
 
 
 vs = cv2.VideoCapture(0)
-vs.set(CAP_PROP_FRAME_WIDTH, 1280)
-vs.set(CAP_PROP_FRAME_HEIGHT, 720)
+vs.set(3, 1280)
+vs.set(4, 720)
 
 clock = Timer()
 
@@ -37,7 +37,7 @@ cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREE
 thickness = 2
 
 while True:
-    print(clock.get())
+    # print(clock.get())
     timeLeft = end - round(clock.get())
 
     ret, frame = vs.read()
@@ -50,6 +50,7 @@ while True:
 
     k = cv2.waitKey(1)
     if k == ord('r') or (button.is_pressed):
+    # if k == ord('r'):
         clock.reset()
     if k == ord('q'):
         break
