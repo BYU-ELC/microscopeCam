@@ -1,5 +1,6 @@
 
 import cv2
+from cv2 import VideoCapture
 import time
 
 from gpiozero import Button
@@ -16,8 +17,8 @@ class Timer:
 
 
 vs = cv2.VideoCapture(0)
-vs.set(3, 1280)
-vs.set(4, 720)
+vs.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+vs.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
 
 clock = Timer()
 
@@ -32,7 +33,7 @@ textColor = (255, 0, 255)
 window_name = "Microscope"
 cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
 cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-  
+
 # Line thickness of 2 px
 thickness = 2
 
@@ -61,3 +62,4 @@ while True:
 # cleanup
 vs.release()
 cv2.destroyAllWindows()
+
